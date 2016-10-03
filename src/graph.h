@@ -214,7 +214,7 @@ public:
 	   argument is omitted, exit(1) will be called. */
 	Graph(node *nodes, arc *arcs, int num_nodes, void (*err_function)(char *) = NULL);
 
-	void Graph::reset_flow( void )
+	void reset_flow( void )
 	{
 		flow = 0;
 	}
@@ -249,7 +249,7 @@ public:
 	is empty, it is replaced by the second queue
 	(and the second queue becomes empty).
 	*/
-	inline void Graph::set_active(node *i)
+	inline void set_active(node *i)
 	{
 		if (!i->next)
 		{

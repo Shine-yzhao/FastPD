@@ -223,7 +223,7 @@ void Graph::process_source_orphan(node *i)
 		}
 	}
 
-	if (i->parent = a0_min)
+	if ((i->parent = a0_min))
 	{
 		i -> TS = TIME;
 		i -> DIST = d_min + 1;
@@ -307,7 +307,7 @@ void Graph::process_sink_orphan(node *i)
 		}
 	}
 
-	if (i->parent = a0_min)
+	if ((i->parent = a0_min))
 	{
 		i -> TS = TIME;
 		i -> DIST = d_min + 1;
@@ -354,7 +354,7 @@ Graph::flowtype Graph::apply_maxflow( int init_on )
 
 	while ( 1 )
 	{
-		if (i=current_node)
+		if ((i=current_node))
 		{
 			i -> next = NULL; /* remove active flag */
 			if (!i->parent) i = NULL;
@@ -405,12 +405,12 @@ Graph::flowtype Graph::apply_maxflow( int init_on )
 			/* augmentation end */
 
 			/* adoption */
-			while (np=orphan_first)
+			while ((np=orphan_first))
 			{
 				np_next = np -> next;
 				np -> next = NULL;
 
-				while (np=orphan_first)
+				while ((np=orphan_first))
 				{
 					orphan_first = np -> next;
 					i = np -> ptr;
@@ -587,7 +587,7 @@ Graph::flowtype Graph::run_maxflow( int init_on )
 
 	while ( 1 )
 	{
-		if (i=current_node)
+		if ((i=current_node))
 		{
 			i -> next = NULL; /* remove active flag */
 			if (!i->parent) i = NULL;
@@ -663,12 +663,12 @@ Graph::flowtype Graph::run_maxflow( int init_on )
 			/* augmentation end */
 
 			/* adoption */
-			while (np=orphan_first)
+			while ((np=orphan_first))
 			{
 				np_next = np -> next;
 				np -> next = NULL;
 
-				while (np=orphan_first)
+				while ((np=orphan_first))
 				{
 					orphan_first = np -> next;
 					i = np -> ptr;
