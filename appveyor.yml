@@ -1,0 +1,42 @@
+version: 1.0.{build}
+
+os:
+    - Visual Studio 2015
+
+platform:
+    - x86
+    - x64
+
+configuration:
+    - Debug
+    - Release
+
+clone_folder: c:\projects\FastPD
+
+build_script:
+    - echo "Running cmake..."
+    - cd c:\projects\FastPD
+    - cmake --version
+    - set PATH=C:\Program Files (x86)\MSBuild\14.0\Bin;%PATH%
+    - mkdir build && cd build
+    - if "%platform%" == "x86" cmake -G "Visual Studio 14 2015" ..
+    - if "%platform%" == "x64" cmake -G "Visual Studio 14 2015 Win64" ..
+    - cmake --build . --config release
+
+after_build:
+    - mkdir usr\lib
+    - copy %APPVEYOR_BUILD_FOLDER%\build\release\*.dll usr\lib\
+    - if "%platform%" == "x86" 7z a libFastPD-x86.zip usr\lib\*.dll
+    - if "%platform%" == "x64" 7z a libFastPD-x64.zip usr\lib\*.dll
+
+artifacts:
+    - path: '**\*.zip'
+      name: libFastPD
+
+deploy:
+    provider: GitHub
+    auth_token:
+        secure: KMhS6CeUGNCcnNLaoAq5QmVdypllNc/LWg0ULFbycp9ZW9gr9b/PX4uxmUCE1SoI
+    on:
+        branch: master
+        appveyor_repo_tag: true

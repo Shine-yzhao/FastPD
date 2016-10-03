@@ -1,0 +1,26 @@
+language: cpp
+
+os:
+  - linux
+  - osx
+
+notifications:
+  email: false
+
+before_script:
+  - mkdir build
+  - cd build
+  - cmake ..
+
+script:
+  - make
+
+deploy:
+  provider: releases
+  api_key: "$OATH_TOKEN"
+  file: "libFastPD.*"
+  file_glob: true
+  skip_cleanup: true
+  on:
+    tags: true
+    all_branches: true
