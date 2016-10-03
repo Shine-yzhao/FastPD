@@ -779,7 +779,7 @@ class CV_Fast_PD
 			for( i = 0; i < num_children; i++ )
 			{
 				Graph::node *n = _children[i];
-				unsigned int id  = ((unsigned int)n - (unsigned int)_nodes) / sizeof(Graph::node); 
+				unsigned int id  = ((unsigned int)(size_t)n - (unsigned int)(size_t)_nodes) / sizeof(Graph::node);
 				Node_info *pinfo = &_pinfo[id];
 
 				// If necessary, repair "loads" in case of non-metric
