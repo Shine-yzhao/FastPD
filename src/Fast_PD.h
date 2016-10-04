@@ -944,6 +944,12 @@ class CV_Fast_PD
 
 		double MAX( double a, double b ) { return ( a >= b ? a : b ); }
 		double MIN( double a, double b ) { return ( a <= b ? a : b ); }
+    
+        // helper functions
+        Graph::Label getLabel( int position ){
+            assert(position >= 0 && position < _numpoints);
+            return _pinfo[position].label;
+        }
 
 		static void err_fun(char * msg)
 		{
