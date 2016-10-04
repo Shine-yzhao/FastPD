@@ -13,10 +13,10 @@ else()
 endif()
 
 
-include_directories(“${CMAKE_SOURCE_DIR}/src”)
+include_directories("${CMAKE_SOURCE_DIR}/include")
 
 file(GLOB SOURCES ./src/*.cpp)
-file(GLOB HEADERS ./src/*.h)
+file(GLOB HEADERS ./include/*.h)
 
 add_library(${TARGET_NAME} SHARED ${SOURCES} ${HEADERS})
 
